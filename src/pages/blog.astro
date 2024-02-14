@@ -12,7 +12,7 @@ const allPosts = await getCollection("posts");
     {
       allPosts.map((post) => (
         <li>
-          <a href={`/posts/${post.slug}`}>
+          <a href={`/AstroFez/posts/${post.slug}`}>
             <Image
               src={post.data.image.url}
               alt={post.data.image.alt}
