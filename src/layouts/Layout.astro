@@ -1,6 +1,11 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import FezNav from "../components/FezNav.astro";
+import FezFooter from "../components/FezFooter.astro";
+import "../css/global.css";
+
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -8,44 +13,34 @@ const { title } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body class="relative pb-24" style="min-height: 100dvh;">
+    <FezNav />
+    <div
+      class="grid mx-4 gap-y-4 grid-rows lg:grid-cols-4 lg:gap-x-8 lg:mx-32 xl:gap-x-16 xl:mx-64 mt-8 relative"
+    >
+      <div>
+        <ul
+          class="hidden lg:block bg-primary-950 text-primary-50 px-4 py-4 rounded-lg sticky top-8"
+        >
+          {
+            Array.from({ length: 12 }, (_, index) => (
+              <li>{`list item ${index + 1}`}</li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="col-span-3"><slot /></div>
+    </div>
+    <FezFooter />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style>

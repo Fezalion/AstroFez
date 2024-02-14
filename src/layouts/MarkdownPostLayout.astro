@@ -1,0 +1,62 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import FezNav from "../components/FezNav.astro";
+import FezFooter from "../components/FezFooter.astro";
+import { Image } from "astro:assets";
+import "../css/global.css";
+
+interface Props {
+  frontmatter: {
+    data: {
+      title: string;
+      author: string;
+      pubDate: Date;
+      description: string;
+      image: {
+        url: string;
+        alt: string;
+      };
+    };
+    slug: string;
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title></title>
+    <ViewTransitions />
+  </head>
+  <body class="relative pb-24" style="min-height: 100dvh;">
+    <FezNav />
+    <div
+      class="grid mx-4 gap-y-4 grid-rows lg:grid-cols-4 lg:gap-x-8 lg:mx-32 xl:gap-x-16 xl:mx-64 mt-8 relative"
+    >
+      <div class="col-span-2">
+        <Image
+          src={frontmatter.data.image.url}
+          alt={frontmatter.data.image.alt}
+          width={600}
+          height={400}
+          transition:name={"post-image-" + frontmatter.slug}
+          class="rounded-lg"
+        />
+        <h1>{frontmatter.data.title}</h1>
+        <small>
+          Written by {frontmatter.data.author} in {frontmatter.data.pubDate}
+        </small>
+        <p>{frontmatter.data.description}</p>
+      </div>
+      <article class="prose col-span-2"><slot /></article>
+    </div>
+    <FezFooter />
+  </body>
+</html>

@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="flex flex-col items-center">
+    <h1>Welcome to me</h1>
+    <p>
+      {
+        Array.from({ length: 24 }, (_, index) => (
+          <p>Bunu okuyan tosun aytunca kosun</p>
+        ))
+      }
+    </p>
+  </main>
+</Layout>
