@@ -1,3 +1,16 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+#blog-post-body {
+  animation-fill-mode: forwards;
+  animation-delay: .3s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1)
+}
+
+@keyframes fadeIn {
+  to {
+    @apply translate-y-0 opacity-100;    
+  }
+}
+

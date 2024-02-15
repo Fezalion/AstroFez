@@ -2,7 +2,11 @@
 export default {
 	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
 	theme: {
-		extend: {},
+		extend: {
+			animation: {
+				fadeIn: 'fadeIn .5s ease-in-out',
+			}	
+		},
 		colors: {
 			'primary': {
 				'50': '#ffffff',

@@ -48,16 +48,20 @@ const { frontmatter: post } = Astro.props;
       />
     </div>
     <div
-      class="grid px-4 gap-y-4 grid-rows lg:grid-cols-4 lg:gap-x-8 lg:px-32 xl:gap-x-16 xl:px-64 mt-8 relative bg-primary-50"
+      id="blog-post-body"
+      class="animate-fadeIn translate-y-[128rem] opacity-0 mt-8 relative bg-primary-50
+      grid px-4 gap-y-4 grid-rows
+      lg:grid-cols-4 lg:gap-x-8 lg:px-32 lg:translate-y-96
+      xl:gap-x-16 xl:px-64 xl:translate-y-72"
     >
       <div class="col-span-4 relative">
         <div
           class="-top-24 absolute bg-primary-950 text-primary-50 bg-opacity-50 py-4 px-8"
         >
-          <h1 class="font-semibold" transition:name={"post-title-" + post.slug}>
+          <h1 class="font-semibold">
             {post.data.title}
           </h1>
-          <small class="text-xs" transition:animate="fade">
+          <small class="text-xs">
             Written by {post.data.author} in {post.data.pubDate}
           </small>
         </div>

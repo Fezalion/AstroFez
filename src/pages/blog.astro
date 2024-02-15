@@ -21,12 +21,7 @@ const allPosts = await getCollection("posts");
               transition:name={"post-image-" + post.slug}
               class="rounded-lg"
             />
-            <h1
-              class="font-semibold"
-              transition:name={"post-title-" + post.slug}
-            >
-              {post.data.title}
-            </h1>
+            <h1 class="font-semibold">{post.data.title}</h1>
           </a>
         </li>
       ))
