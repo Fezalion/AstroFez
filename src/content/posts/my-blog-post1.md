@@ -4,7 +4,7 @@ pubDate: 2022-07-01
 description: 'aaaaaaaaaaaaaaaaaaaaaaa'
 author: 'John Doe'
 image:
-    url: 'https://placehold.co/600x400'
+    url: 'https://unsplash.it/1920/1080?random'
     alt: 'Blog Post 1'
 ---
 

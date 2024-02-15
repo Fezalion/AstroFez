@@ -21,7 +21,7 @@ interface Props {
   };
 }
 
-const { frontmatter } = Astro.props;
+const { frontmatter: post } = Astro.props;
 ---
 
 <!doctype html>
@@ -37,25 +37,34 @@ const { frontmatter } = Astro.props;
   </head>
   <body class="relative pb-24" style="min-height: 100dvh;">
     <FezNav />
+    <div class="xl:w-full xl:h-[70dvh] md:h-[50dvh] h-[20dvh]">
+      <Image
+        src={post.data.image.url}
+        alt={post.data.image.alt}
+        width={1920}
+        height={1080}
+        transition:name={"post-image-" + post.slug}
+        class="object-contain"
+      />
+    </div>
     <div
-      class="grid mx-4 gap-y-4 grid-rows lg:grid-cols-4 lg:gap-x-8 lg:mx-32 xl:gap-x-16 xl:mx-64 mt-8 relative"
+      class="grid px-4 gap-y-4 grid-rows lg:grid-cols-4 lg:gap-x-8 lg:px-32 xl:gap-x-16 xl:px-64 mt-8 relative bg-primary-50"
     >
-      <div class="col-span-2">
-        <Image
-          src={frontmatter.data.image.url}
-          alt={frontmatter.data.image.alt}
-          width={600}
-          height={400}
-          transition:name={"post-image-" + frontmatter.slug}
-          class="rounded-lg"
-        />
-        <h1>{frontmatter.data.title}</h1>
-        <small>
-          Written by {frontmatter.data.author} in {frontmatter.data.pubDate}
-        </small>
-        <p>{frontmatter.data.description}</p>
+      <div class="col-span-4 relative">
+        <div
+          class="-top-24 absolute bg-primary-950 text-primary-50 bg-opacity-50 py-4 px-8"
+        >
+          <h1 class="font-semibold" transition:name={"post-title-" + post.slug}>
+            {post.data.title}
+          </h1>
+          <small class="text-xs" transition:animate="fade">
+            Written by {post.data.author} in {post.data.pubDate}
+          </small>
+        </div>
+        <article class="prose mt-4">
+          <slot />
+        </article>
       </div>
-      <article class="prose col-span-2"><slot /></article>
     </div>
     <FezFooter />
   </body>

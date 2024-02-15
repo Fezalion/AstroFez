@@ -4,7 +4,7 @@ pubDate: 2022-01-01
 description: 'ccc'
 author: 'John Doe'
 image:
-    url: 'https://placehold.co/600x400'
+    url: 'https://unsplash.it/1920/1080?random'
     alt: 'Blog Post 3'
 ---
 
