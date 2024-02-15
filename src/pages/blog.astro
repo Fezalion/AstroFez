@@ -8,7 +8,7 @@ const allPosts = await getCollection("posts");
 
 <Layout title="All Posts">
   <h1>All Posts</h1>
-  <ul class="flex gap-16 flex-wrap">
+  <ul class="flex flex-wrap gap-16">
     {
       allPosts.map((post) => (
         <li>

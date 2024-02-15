@@ -4,7 +4,7 @@ export default {
 	theme: {
 		extend: {
 			animation: {
-				fadeIn: 'fadeIn .5s ease-in-out',
+				fadeIn: 'fadeIn .5s ease-in-out forwards',
 			}	
 		},
 		colors: {

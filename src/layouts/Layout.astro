@@ -25,11 +25,11 @@ const { title } = Astro.props;
   <body class="relative pb-24" style="min-height: 100dvh;">
     <FezNav />
     <div
-      class="grid mx-4 gap-y-4 grid-rows lg:grid-cols-4 lg:gap-x-8 lg:mx-32 xl:gap-x-16 xl:mx-64 mt-8 relative"
+      class="relative grid mx-4 mt-8 gap-y-4 grid-rows lg:grid-cols-4 lg:gap-x-8 lg:mx-32 xl:gap-x-16 xl:mx-64"
     >
       <div>
         <ul
-          class="hidden lg:block bg-primary-950 text-primary-50 px-4 py-4 rounded-lg sticky top-8"
+          class="sticky hidden px-4 py-4 rounded-lg lg:block bg-primary-950 text-primary-50 top-8"
         >
           {
             Array.from({ length: 12 }, (_, index) => (
